@@ -11,9 +11,6 @@ import java.util.ArrayList;
 public class Utis {
 
     //TO DO leer fichero JSON
-    // TO DO Buscar fichero
-
-
     public static ArrayList<GeoIP> getFile(){
          Gson gson = new Gson();
          ArrayList<GeoIP> ListIP = null;
@@ -26,6 +23,32 @@ public class Utis {
         ListIP = gson.fromJson(br, new TypeToken<ArrayList<GeoIP>>(){}.getType());
         return ListIP;
         }
+
+// TO DO Buscar fichero
+    public GeoIP locateIP(String ip, ArrayList<GeoIP> listGeoIP){
+        long longIP = Dot2LongIP(ip);
+
+        Boolean found = false;
+        GeoIP founditem = null;
+
+        int i = 0;
+
+        while(!found && i < listGeoIP.size()){
+
+            GeoIP item = listGeoIP.get(i);
+            if(longIP >= item.getIp_from() && longIP <= item.getIp_to()){
+                found = true;
+                founditem = item;
+            }
+            i++;
+
+        }
+        if(founditem != null){
+            return founditem;
+        }else{
+            return  new GeoIP();
+        }
+    }
 
     public static String longToIp(long ip) {
         StringBuilder result = new StringBuilder(15);

@@ -2,6 +2,8 @@ package frontend;
 
 import javax.servlet.annotation.WebServlet;
 
+import backend.GeoIP;
+import backend.Utis;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
@@ -11,6 +13,8 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+
+import java.util.ArrayList;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -33,6 +37,14 @@ public class MyUI extends UI {
         button.addClickListener(e -> {
             layout.addComponent(new Label("Thanks " + name.getValue() 
                     + ", it works!"));
+
+            Utis  utis= new Utis();
+            ArrayList<GeoIP> jsonFile= Utis.getFile();
+            System.out.println(jsonFile.get(0));
+
+            GeoIP geoInfo = utis.locateIP("149.167.240.0", jsonFile);
+
+            System.out.println(geoInfo);
         });
         
         layout.addComponents(name, button);
