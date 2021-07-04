@@ -1,3 +1,34 @@
-Daniel Ojeda
-Madrid 
-22/07/1997
+Hacemos git init en la carpeta que guardara el repositorio
+Hacemos git clone (url) para clonarlo
+Hacemos ls para comprobar que tenemos todo
+
+3a)
+Hacemos git branch Temporal -> para crear la rama temporal
+Hacemos git checkout Temporal -> para irnos a la rama Temporal
+Hacemos git push origin Temporal -> para mandar lo que tenemos en origin a Temporal
+
+3b)
+Creamos un fichero MisDatos.txt en la carpeta en la que estamos
+Añadimos ese fichero con un commit al remoto y local MD1
+git add MisDatos.txt
+git commit -m "MD1" -> ya tenemos en local el fichero, pero falta subirlo al remoto
+git push origin Temporal
+Hacemos los cambios y repetimos
+git add MisDatos.txt
+git commit -m "MD2" -> ya tenemos en local el fichero, pero falta subirlo al remoto
+git push origin Temporal
+git add MisDatos.txt
+git commit -m "MD3" -> ya tenemos en local el fichero, pero falta subirlo al remoto
+git push origin Temporal
+
+3c)
+Hacemos git checkout main -> para volver a main
+Hacemos git merge Temporal -> unificamos la rama Temporal con la main
+Hacemos git branch -D Temporal -> para borrar la rama Temporal en el local
+Hacemos git push origin :Temporal -> para borrar la rama Temporal en remoto
+
+3d)
+Hacemos git push origin main -> para mandar los cambios a remoto
+
+3e)
+Comprobamos refrescando la web de github y vemos lo ultimo que hemos subido
