@@ -31,20 +31,32 @@ public class MyUI extends UI {
         final VerticalLayout layout = new VerticalLayout();
         
         final TextField name = new TextField();
-        name.setCaption("Type your name here:");
+        name.setCaption("Introduzca una dirección IP");
 
-        Button button = new Button("Click Me");
+        Button button = new Button("Enviar");
         button.addClickListener(e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue() 
-                    + ", it works!"));
+
 
             Utis  utis= new Utis();
             ArrayList<GeoIP> jsonFile= Utis.getFile();
-            System.out.println(jsonFile.get(0));
+            //System.out.println(jsonFile.get(0));
+            //System.out.println(jsonFile.get(1));
+            //System.out.println(jsonFile.get(2));
+            //System.out.println(jsonFile.get(3));
+            //System.out.println(jsonFile.get(4));
+            //System.out.println(jsonFile.get(5));
+            GeoIP geoInfo = null;
+            try {
+                geoInfo = utis.locateIP(name.getValue(), jsonFile);
+                System.out.println(geoInfo);
 
-            GeoIP geoInfo = utis.locateIP("149.167.240.0", jsonFile);
+                layout.addComponent(new Label("La inforacion de geolocalizacion asociada a la op introducida es: " + geoInfo
+                        + ", it works!"));
+            } catch (Exception exception) {
+                System.out.println(exception.getMessage());
+            }
 
-            System.out.println(geoInfo);
+
         });
         
         layout.addComponents(name, button);

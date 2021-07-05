@@ -25,8 +25,20 @@ public class Utis {
         }
 
 // TO DO Buscar fichero
-    public GeoIP locateIP(String ip, ArrayList<GeoIP> listGeoIP){
+    public GeoIP locateIP(String ip, ArrayList<GeoIP> listGeoIP) throws Exception{
+        if(ip == ""){
+            throw new Exception("ip vacia");
+        }
+
         long longIP = Dot2LongIP(ip);
+        System.out.println(longIP > (long)(4294967295.0));
+        if(longIP > (long)4294967295.0){
+            throw new Exception("IP fuera de rango por arriba");
+        }
+
+        if(longIP < (long)0){
+            throw new Exception("IP fuera de rango por abajo");
+        }
 
         Boolean found = false;
         GeoIP founditem = null;

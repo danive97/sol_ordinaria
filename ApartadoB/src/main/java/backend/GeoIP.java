@@ -112,15 +112,13 @@ public class GeoIP {
 
     @Override
     public String toString() {
-        return "GeoIP{" +
-                "country_code='" + country_code + '\'' +
+        return  "country_code='" + country_code + '\'' +
                 ", country_name='" + country_name + '\'' +
                 ", region_name='" + region_name + '\'' +
                 ", city_name='" + city_name + '\'' +
                 ", latitude=" + latitude +
                 ", longitude='" + longitude + '\'' +
                 ", zip_code='" + zip_code + '\'' +
-                ", time_zone='" + time_zone + '\'' +
-                '}';
+                ", time_zone='" + time_zone + '\'';
     }
 }
