@@ -1,0 +1,14 @@
+1. New project
+2. Maven -> Add archetype
+3. Relleno group id, artificactID, version
+4. Seleccionamos la opción y next
+5. Nombre del proyecto
+6. Selecciono la carpeta destino, finish
+
+//COMPROBAR QUE FUNCIONA LA APP
+
+1. Add configuration -> Maven -> Comand line -> Jetty:Run
+2. Nos vamos a chrome y ponemos localhost:8080
+3. En JAVA, ufv.dis -> hacemos nuevo paquete "backend" y dentro hacemos una clase Java
+4. En JAVA, ufv.dis -> hacemos un nuevo paquete "frontend" y movemos la clase principal a dicho paquete
+5. Comprobamos funcionamiento
